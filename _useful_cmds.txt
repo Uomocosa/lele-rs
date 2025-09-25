@@ -1,0 +1,2 @@
+cargo new --bin apps/my-app
+cargo new --lib libs/my-lib

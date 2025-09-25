@@ -1,0 +1,58 @@
+{
+	"packages": {
+		"LSP": { "enabled": true },
+		"LSP-rust-analyzer": { "enabled": true },
+		"LSP-file-watcher-chokidar": { "enabled": true },
+		"Git": { "enabled": false },
+	},
+	"folders": [
+		{
+			"path": ".",
+			"folder_exclude_patterns": [
+				"target",
+				".vscode",
+				".idea",
+				".git"
+			],
+			"file_exclude_patterns": [
+				"*.sublime-workspace"
+			]
+		}
+	],
+	"build_systems": [
+		{
+			"name": "cargo test --current_file",
+			"shell_cmd": "cargo test $file_base_name -- --nocapture",
+			"working_dir": "$project_path",
+			"selector": "source.rust"
+		}
+	],
+	"settings": {
+		"LSP": {
+			"rust-analyzer": {
+				"enabled": true,
+				"command": [
+					"rust-analyzer"
+				],
+				"initializationOptions": {
+					"server": {
+						"extraEnv": {
+							"RUSTUP_TOOLCHAIN": "stable"
+						}
+					},
+					"cargo": {
+						"allFeatures": true,
+						"buildScripts": true
+					},
+					"checkOnSave": {
+						"command": "clippy"
+					}
+				}
+			}
+		},
+		"tab_size": 4,
+		"translate_tabs_to_spaces": true,
+		"trim_trailing_white_space_on_save": true,
+		"rulers": [80],
+	},
+}
