@@ -11,5 +11,6 @@ mod tests {
         let result = add(2, 2);
         println!("diocane");
         assert_eq!(result, 4);
+
     }
 }
