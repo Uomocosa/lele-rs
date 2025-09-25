@@ -12,4 +12,5 @@ mod tests {
         println!("diocane");
         assert_eq!(result, 4);
     }
+
 }
