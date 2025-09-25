@@ -21,14 +21,23 @@
 	],
 	"build_systems": [
 		{
+			"name": "cargo test --current_file",
+			"target": "terminus_open",
+			"cmd": ["cargo", "test"],
+			"cwd": "$file_path",
+			"selector": "source.rust",
+			"title": "tests_result",
+			"auto_close": false
+		},
+		{
 			"name": "cargo test --current_file -q --no-capture",
+			"target": "terminus_open",
+			// "cmd": ["cargo", "test", "-q", "--", "--no-capture"],
 			"cmd": ["cargo", "test", "-q", "--lib", "--", "--no-capture"],
-		    "working_dir": "$file_path",
-		    "selector": "source.rust",
-		    // "env": {
-		    //     "RUST_BACKTRACE": "1"
-		    // },
-		    // "file_regex": "^.*--> (.*):(\\d+):(\\d+)"
+			"cwd": "$file_path",
+			"selector": "source.rust",
+			"title": "tests_result",
+			"auto_close": false
 		},
 	],
 	"settings": {
@@ -59,4 +68,18 @@
 		"trim_trailing_white_space_on_save": true,
 		"rulers": [80],
 	},
+	// "build_systems": [
+	// // It's badly formatted ;;
+	// 	{
+	// 		"name": "cargo test --current_file -q --no-capture",
+	// 		"cmd": ["cargo", "test", "-q", "--lib"],
+	// 		// "cmd": ["cargo", "test", "-q", "--lib", "--", "--no-capture"],
+	// 	    "working_dir": "$file_path",
+	// 	    "selector": "source.rust",
+	// 	    // "env": {
+	// 	    //     "RUST_BACKTRACE": "1"
+	// 	    // },
+	// 	    // "file_regex": "^.*--> (.*):(\\d+):(\\d+)"
+	// 	},
+	// ],
 }

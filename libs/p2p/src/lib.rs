@@ -12,6 +12,11 @@ mod tests {
         println!("diocane");
         assert_eq!(result, 4);
     }
+
+    #[test]
+    fn it_does_not_work() {
+        let result = add(2, 2);
+        println!("diocane");
+        assert_eq!(result, 5);
+    }
 }
-
-
