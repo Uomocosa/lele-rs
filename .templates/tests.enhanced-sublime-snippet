@@ -1,0 +1,25 @@
+---
+tabTrigger: 'wind'
+scope: 'text.html - (meta.tag | meta.character.less-than) - source.php'
+description: 'Windstorm HTML Template'
+options:
+  - field: 2
+    placeholder: 'Windstorm Version Number'
+    values:
+      - '0.3.8'
+      - 'latest'
+---
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>$1</title>
+</head>
+<body>
+  <!-- Docs: https://windstorm.axel669.net/ -->
+  <script src="https://cdn.jsdelivr.net/npm/@axel669/windstorm@${2:latest}/dist/browser.js"></script>
+
+  $0
+</body>
+</html>
