@@ -1,23 +1,22 @@
 
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
+mod std_async_tests;
+
+use libp2p::{ping, swarm::NetworkBehaviour};
+
+#[derive(NetworkBehaviour)]
+pub struct Behaviour {
+    ping: ping::Behaviour,
 }
+
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    // use super::*;
+    use libp2p::identity;
 
     #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        println!("diocane");
-        assert_eq!(result, 4);
-    }
-
-    #[test]
-    fn it_does_not_work() {
-        let result = add(2, 2);
-        println!("diocane");
-        assert_eq!(result, 5);
+    fn create_local_peer(){
+        let local_key = identity::Keypair::generate_ed25519();
+        println!("local_key: {local_key:?}")
     }
 }

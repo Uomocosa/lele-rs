@@ -1,22 +1,24 @@
 [workspace]
 members = [
-    "apps/toy_p2p", "apps/worshop-01-Identity-and-Swarm",
+    "apps/toy_p2p",
+    "apps/worshop-01-Identity-and-Swarm",
 
-    "libs/p2p", "libs/subprocess"
+    "libs/p2p",
+    "libs/subprocess"
 ]
 
 resolver = "2"
 
 [workspace.package]
 version = "0.0.1"
-edition = "2024"
+edition = "2021"
 authors = ["lele"]
 license = "MIT OR Apache-2.0"
 
 
 [workspace.dependencies]
 futures = "0.3"
-libp2p = { version = "0.56" }
+libp2p = { version = "0.55.0" , features = ["identify", "noise", "ping", "tcp", "yamux", "macros"] }
 # serde = { version = "1.0", features = ["derive"] }
 thiserror = "2"
 
