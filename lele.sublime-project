@@ -20,17 +20,26 @@
 			]
 		}
 	],
-	// "build_systems": [
-	// 	{
-	// 		"name": "LSP-rust-analyzer: Run...",
-	// 		"target": "rust_analyzer_run_project",
-	// 		// "cmd": ["cargo", "test", "$file_base_name"],
-	// 		// "cwd": "$file_path",
-	// 		"selector": "source.rust",
-	// 		// "title": "tests_result",
-	// 		// "auto_close": false
-	// 	},
-	// ],
+	"build_systems": [
+		{
+			"name": "cargo test --current_file",
+			"target": "terminus_open",
+			"cmd": ["cargo", "test", "$file_base_name"],
+			"cwd": "$file_path",
+			"selector": "source.rust",
+			"title": "tests_result",
+			"auto_close": false
+		},
+		{
+			"name": "cargo test --current_file -q --no-capture",
+			"target": "terminus_open",
+			"cmd": ["cargo", "test", "-q", "$file_base_name", "--", "--no-capture"],
+			"cwd": "$file_path",
+			"selector": "source.rust",
+			"title": "tests_result",
+			"auto_close": false
+		},
+	],
 	"settings": {
 		"tab_size": 4,
 		"translate_tabs_to_spaces": true,
@@ -41,60 +50,24 @@
 			"debug": true,
 		},
 		"LSP": {
+			// "show_code_actions": "bulb",
+		    // "show_code_lens": "phantom",
 			"rust-analyzer": {
 				"enabled": true,
-			    // "show_code_lenses": true,
 				"command": [
 					"rust-analyzer"
 				],
 				"initializationOptions": {
-					"server": {
-						"extraEnv": {
-							"RUSTUP_TOOLCHAIN": "stable"
-						}
-					},
-					"cargo": {
-						"allFeatures": true,
-						"buildScripts": true
-					},
-					"checkOnSave": {
-						"command": "check",
-						// "command": "clippy",
-					}
-				}
-			}
+				"server": { "extraEnv":{"RUSTUP_TOOLCHAIN": "stable"}} },
+				"settings": {
+					"rust-analyzer.runnables.extraTestBinaryArgs": [
+						"--no-capture"
+					],
+					"rust-analyzer.cargo.allFeatures": true,
+					"rust-analyzer.cargo.buildScripts.enable": true,
+					"rust-analyzer.checkOnSave.command": "check"
+				},
+			},
 		},
 	},
-	// "build_systems": [
-	// // It's badly formatted ;;
-	// 	{
-	// 		"name": "cargo test --current_file -q --no-capture",
-	// 		"cmd": ["cargo", "test", "-q", "--lib"],
-	// 		// "cmd": ["cargo", "test", "-q", "--lib", "--", "--no-capture"],
-	// 	    "working_dir": "$file_path",
-	// 	    "selector": "source.rust",
-	// 	    // "env": {
-	// 	    //     "RUST_BACKTRACE": "1"
-	// 	    // },
-	// 	    // "file_regex": "^.*--> (.*):(\\d+):(\\d+)"
-	// 	},
-	// 	{
-	// 		"name": "cargo test --current_file",
-	// 		"target": "terminus_open",
-	// 		"cmd": ["cargo", "test", "$file_base_name"],
-	// 		"cwd": "$file_path",
-	// 		"selector": "source.rust",
-	// 		"title": "tests_result",
-	// 		"auto_close": false
-	// 	},
-	// 	{
-	// 		"name": "cargo test --current_file -q --no-capture",
-	// 		"target": "terminus_open",
-	// 		"cmd": ["cargo", "test", "-q", "$file_base_name", "--", "--no-capture"],
-	// 		"cwd": "$file_path",
-	// 		"selector": "source.rust",
-	// 		"title": "tests_result",
-	// 		"auto_close": false
-	// 	},
-	// ],
 }
