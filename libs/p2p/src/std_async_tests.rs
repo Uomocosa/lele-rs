@@ -8,7 +8,6 @@ mod tests {
         println!("(finished expensive_computation)");
     }
 
-
     #[test]
     fn scope_test_1() {
         println!("tesing ...");

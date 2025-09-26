@@ -20,27 +20,17 @@
 			]
 		}
 	],
-	"build_systems": [
-		{
-			"name": "cargo test --current_file",
-			"target": "terminus_open",
-			"cmd": ["cargo", "test"],
-			"cwd": "$file_path",
-			"selector": "source.rust",
-			"title": "tests_result",
-			"auto_close": false
-		},
-		{
-			"name": "cargo test --current_file -q --no-capture",
-			"target": "terminus_open",
-			// "cmd": ["cargo", "test", "-q", "--", "--no-capture"],
-			"cmd": ["cargo", "test", "-q", "--lib", "--", "--no-capture"],
-			"cwd": "$file_path",
-			"selector": "source.rust",
-			"title": "tests_result",
-			"auto_close": false
-		},
-	],
+	// "build_systems": [
+	// 	{
+	// 		"name": "LSP-rust-analyzer: Run...",
+	// 		"target": "rust_analyzer_run_project",
+	// 		// "cmd": ["cargo", "test", "$file_base_name"],
+	// 		// "cwd": "$file_path",
+	// 		"selector": "source.rust",
+	// 		// "title": "tests_result",
+	// 		// "auto_close": false
+	// 	},
+	// ],
 	"settings": {
 		"tab_size": 4,
 		"translate_tabs_to_spaces": true,
@@ -53,6 +43,7 @@
 		"LSP": {
 			"rust-analyzer": {
 				"enabled": true,
+			    // "show_code_lenses": true,
 				"command": [
 					"rust-analyzer"
 				],
@@ -86,6 +77,24 @@
 	// 	    //     "RUST_BACKTRACE": "1"
 	// 	    // },
 	// 	    // "file_regex": "^.*--> (.*):(\\d+):(\\d+)"
+	// 	},
+	// 	{
+	// 		"name": "cargo test --current_file",
+	// 		"target": "terminus_open",
+	// 		"cmd": ["cargo", "test", "$file_base_name"],
+	// 		"cwd": "$file_path",
+	// 		"selector": "source.rust",
+	// 		"title": "tests_result",
+	// 		"auto_close": false
+	// 	},
+	// 	{
+	// 		"name": "cargo test --current_file -q --no-capture",
+	// 		"target": "terminus_open",
+	// 		"cmd": ["cargo", "test", "-q", "$file_base_name", "--", "--no-capture"],
+	// 		"cwd": "$file_path",
+	// 		"selector": "source.rust",
+	// 		"title": "tests_result",
+	// 		"auto_close": false
 	// 	},
 	// ],
 }
