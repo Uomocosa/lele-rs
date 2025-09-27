@@ -1,73 +1,33 @@
 {
-	"packages": {
-		"LSP": { "enabled": true },
-		"LSP-rust-analyzer": { "enabled": true },
-		"LSP-file-watcher-chokidar": { "enabled": true },
-		"Git": { "enabled": true },
-		"Terminus": { "enabled": true },
-	},
-	"folders": [
-		{
-			"path": ".",
-			"folder_exclude_patterns": [
-				"target",
-				".vscode",
-				".idea",
-				".git"
-			],
-			"file_exclude_patterns": [
-				"*.sublime-workspace"
-			]
-		}
-	],
-	"build_systems": [
-		{
-			"name": "cargo test --current_file",
-			"target": "terminus_open",
-			"cmd": ["cargo", "test", "$file_base_name"],
-			"cwd": "$file_path",
-			"selector": "source.rust",
-			"title": "tests_result",
-			"auto_close": false
-		},
-		{
-			"name": "cargo test --current_file -q --no-capture",
-			"target": "terminus_open",
-			"cmd": ["cargo", "test", "-q", "$file_base_name", "--", "--no-capture"],
-			"cwd": "$file_path",
-			"selector": "source.rust",
-			"title": "tests_result",
-			"auto_close": false
-		},
-	],
-	"settings": {
-		"tab_size": 4,
-		"translate_tabs_to_spaces": true,
-		"trim_trailing_white_space_on_save": true,
-		"rulers": [80],
-		"enhanced_snippets": {
-			"snippet_sources": ["./.templates"],
-			"debug": true,
-		},
-		"LSP": {
-			// "show_code_actions": "bulb",
-		    // "show_code_lens": "phantom",
-			"rust-analyzer": {
-				"enabled": true,
-				"command": [
-					"rust-analyzer"
-				],
-				"initializationOptions": {
-				"server": { "extraEnv":{"RUSTUP_TOOLCHAIN": "stable"}} },
-				"settings": {
-					"rust-analyzer.runnables.extraTestBinaryArgs": [
-						"--no-capture"
-					],
-					"rust-analyzer.cargo.allFeatures": true,
-					"rust-analyzer.cargo.buildScripts.enable": true,
-					"rust-analyzer.checkOnSave.command": "check"
-				},
-			},
-		},
-	},
+    "folders":
+    [
+        {
+            "path": "."
+        }
+    ],
+    "settings": {
+        "LSP": {
+            "settings": {
+                "show_inlay_hints": true,
+                "show_code_lens": true,
+                // "show_code_lens": "phantom",
+            },
+            "rust-analyzer": {
+                "settings": {
+                    "rust-analyzer.inlayHints.enable": true,
+                    "rust-analyzer.inlayHints.typeHints.enable": true,
+	                "rust-analyzer.inlayHints.chainingHints.enable": true,
+	                "rust-analyzer.inlayHints.parameterHints.enable": true,
+	                
+	                "rust-analyzer.lens.enable": true,
+	                "rust-analyzer.lens.run.enable": true,
+	                "rust-analyzer.lens.debug.enable": true,
+	                "rust-analyzer.lens.implementations.enable": true,
+
+                    "rust-analyzer.testExplorer": true,
+                    "rust-analyzer.interpret.tests": true,
+                }
+            }
+        }
+    }
 }
