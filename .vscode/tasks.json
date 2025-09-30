@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Cargo Test Current Lib File",
+            "type": "shell",
+            "command": "cargo",
+            "args": [
+                "test",
+                "--lib",
+                "${fileBasenameNoExtension}"
+            ],
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": true,
+                "panel": "new",
+                "clear": true
+            },
+            "options": {
+                "shell": {
+                    "executable": "cmd.exe", 
+                    "args": ["/d", "/c"]
+                }
+            },
+            "problemMatcher": [
+                "$rustc"
+            ]
+        }
+    ]
+}

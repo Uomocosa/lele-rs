@@ -1,0 +1,32 @@
+{
+    "git.openRepositoryInParentFolders": "always",
+    
+
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    
+    "editor.tabSize": 4,
+
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer",
+        "editor.formatOnSave": false,
+        "editor.formatOnPaste": false,
+        "editor.insertSpaces": true,
+    },
+    "rust-analyzer.check.command": "clippy",
+    "rust-analyzer.lens.enable": true,
+    "rust-analyzer.lens.debug.enable": false,
+    "rust-analyzer.runnables.extraArgs": [
+        "--",
+        "--nocapture"
+    ],
+
+    "files.associations": {
+        "*.toml": "toml"
+    },
+    "files.watcherExclude": {
+        "**/target/**": true,
+    },
+    "search.exclude": {
+        "**/target": true,
+    }
+}
