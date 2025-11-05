@@ -1,10 +1,13 @@
 [workspace]
 members = [
     "apps/toy_p2p",
-    "apps/worshop-01-Identity-and-Swarm",
+    "apps/worshop-01-Identity-and-Swarm", 
 
     "libs/p2p",
-    "libs/subprocess"
+    "libs/subprocess",
+    "libs/verdigris",
+    
+    "lessons/w01",
 ]
 
 resolver = "2"

@@ -1,0 +1,58 @@
+/*
+ * A simple grammar for MTG Oracle Text
+ */
+
+// Silently consume whitespace (spaces, tabs) between tokens
+WHITESPACE = _{ " " | "\t" }
+
+// An entire oracle text block is a series of abilities,
+// separated by one or more newlines.
+oracle_text = {
+    SOI ~ // Start of Input
+    (ability_line ~ (NEWLINE+ ~ ability_line)*)? ~
+    NEWLINE* ~
+    EOI // End of Input
+}
+
+// An ability line is one of these.
+// The order matters! pest tries them in order.
+ability_line = {
+    activated_ability | keyword_ability | static_ability
+}
+
+// --- 1. Keyword Abilities ---
+// We just list the ones we want to support.
+// The @ makes it "atomic", so it's a single token.
+keyword_ability = @{
+    "Flying" | "Trample" | "Deathtouch" | "Haste" | "Vigilance" | "Lifelink"
+}
+
+// --- 2. Activated Abilities ---
+// Format: {Cost}: {Effect}
+activated_ability = { cost ~ ":" ~ effect }
+
+cost = { cost_component ~ ("," ~ WHITESPACE* ~ cost_component)* }
+cost_component = { mana_cost | tap_symbol }
+
+// Matches {T}, {Q}, etc.
+tap_symbol = { "{" ~ ("T" | "Q") ~ "}" }
+
+// Matches {G}, {W}, {R}, {2}, {X}, etc.
+mana_cost = {
+    "{" ~ (
+        "W" | "U" | "B" | "R" | "G" | "C" | // Colors
+        ASCII_DIGIT+ | // Generic mana
+        "X" | // Variable mana
+        "Y"   // Variable mana
+    ) ~ "}"
+}
+
+// --- 3. Static Abilities / Effects (The "Catch-all") ---
+// For this simple grammar, an effect or a static ability is just
+// "all the text until the end of the line".
+// This is the hardest part to make more specific.
+static_ability = { sentence }
+effect =         { sentence }
+
+// A "sentence" is just one or more characters that isn't a newline.
+sentence = { (!NEWLINE ~ ANY)+ }

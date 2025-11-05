@@ -1,8 +1,7 @@
 {
     "git.openRepositoryInParentFolders": "always",
-    
 
-    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    // "terminal.integrated.defaultProfile.windows": "Command Prompt",
     
     "editor.tabSize": 4,
 
