@@ -14,6 +14,7 @@
     "rust-analyzer.check.command": "clippy",
     "rust-analyzer.lens.enable": true,
     "rust-analyzer.lens.debug.enable": false,
+    "rust-analyzer.lens.implementations.enable": false,
     "rust-analyzer.runnables.extraArgs": [
         "--",
         "--nocapture"

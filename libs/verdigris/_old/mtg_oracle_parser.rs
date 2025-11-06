@@ -3,9 +3,14 @@ use winnow::token::{literal, take_while};
 use winnow::combinator::{alt, preceded, terminated, separated, dispatch};
 use winnow::ascii::{digit1, multispace0};
 use winnow::stream::AsChar;
-use crate::rules::{
-    Mana, 
+use crate::glossary::{
+    ActivatedAbility, Effect, Mana
 };
+
+
+fn mtg_oracle_parser(input: &mut &'static str) -> Effect {
+    
+}
 
 
 fn parse_mana_symbol(input: &mut &'static str) -> ModalResult<Mana> {
@@ -26,7 +31,6 @@ fn parse_mana_symbol(input: &mut &'static str) -> ModalResult<Mana> {
     )).parse_next(input)
 }
 
-
 fn parse_mana_amount(input: &mut &'static str) -> ModalResult<Vec<Mana>> {
     // Parse 1 or more `parse_mana_symbol`, separated by 0 spaces
     separated(
@@ -34,6 +38,10 @@ fn parse_mana_amount(input: &mut &'static str) -> ModalResult<Vec<Mana>> {
         parse_mana_symbol, 
         multispace0
     ).parse_next(input)
+}
+
+fn parse_activated_ability(input: &mut &'static str) -> ModalResult<ActivatedAbility> {
+    unimplemented!()
 }
 
 // fn parse_draw_cards(input: &mut &'static str) -> IResult<DrawCards> {
@@ -51,7 +59,6 @@ fn parse_mana_amount(input: &mut &'static str) -> ModalResult<Vec<Mana>> {
 //     .parse_next(input)
 // }
 
-// // === Top-Level Ability Parser ===
 
 // fn parse_add_ability(input: &mut &'static str) -> IResult<AbilityEffect> {
 //     preceded(
