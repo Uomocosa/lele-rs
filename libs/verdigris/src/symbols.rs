@@ -1,4 +1,4 @@
-use winnow::{ModalResult, Parser, ascii::digit1, combinator::alt, token::literal};
+use winnow::{ModalResult, Parser, ascii::digit1, combinator::alt, error::ContextError, token::literal};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Symbol {
@@ -20,6 +20,8 @@ pub enum Symbol {
     Infinity,
     //...to continue
 }
+
+
 
 pub const W: Symbol = Symbol::White;
 pub const U: Symbol = Symbol::Blue;
@@ -49,7 +51,23 @@ pub const B2: Symbol = Symbol::Choice(&[Symbol::Generic(2), B]);
 pub const R2: Symbol = Symbol::Choice(&[Symbol::Generic(2), R]);
 pub const G2: Symbol = Symbol::Choice(&[Symbol::Generic(2), G]);
 pub const C2: Symbol = Symbol::Choice(&[Symbol::Generic(2), C]);
+
+pub const CW: Symbol = Symbol::Choice(&[C, W]);
+pub const CU: Symbol = Symbol::Choice(&[C, U]);
+pub const CB: Symbol = Symbol::Choice(&[C, B]);
+pub const CR: Symbol = Symbol::Choice(&[C, R]);
+pub const CG: Symbol = Symbol::Choice(&[C, G]);
+
+pub const WU: Symbol = Symbol::Choice(&[W, U]);
+pub const WB: Symbol = Symbol::Choice(&[W, B]);
+pub const WR: Symbol = Symbol::Choice(&[W, R]);
+pub const WG: Symbol = Symbol::Choice(&[W, G]);
+
+pub const WUB: Symbol = Symbol::Choice(&[W, U, B]);
+pub const WUR: Symbol = Symbol::Choice(&[W, U, R]);
+pub const WUG: Symbol = Symbol::Choice(&[W, U, G]);
 // ...to continue
+
 
 
 /// Parses a single MTG symbol.

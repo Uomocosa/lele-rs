@@ -28,3 +28,18 @@ thiserror = "2"
 
 [workspace.lints.clippy]
 pedantic = "warn"
+
+# [target.x86_64-pc-windows-msvc]
+# linker = "rust-lld.exe"
+# rustdocflags = ["-Clinker=rust-lld.exe"]
+# rustflags = [
+#   "-Zshare-generics=n", # This needs to be off if you use dynamic linking on Windows
+#   "-Zthreads=0",
+# ]
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+

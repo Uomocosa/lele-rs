@@ -10,7 +10,6 @@ fn example() {
     assert_eq!(parse_symbol(&mut "{W/R/P}"), Ok(vec![Symbol::Choice(&[W, R, P])]));
 }
 
-/// TODO: Docs
 #[allow(clippy::missing_errors_doc)]
 #[allow(clippy::missing_panics_doc)]
 pub fn parse_single_symbol(input: &mut &'static str) -> ModalResult<Symbol> {
@@ -35,7 +34,6 @@ pub fn parse_single_symbol(input: &mut &'static str) -> ModalResult<Symbol> {
     .parse_next(input)
 }
 
-/// TODO: Docs
 #[allow(clippy::missing_errors_doc)]
 #[allow(clippy::missing_panics_doc)]
 #[allow(dead_code)]
